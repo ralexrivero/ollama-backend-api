@@ -16,4 +16,3 @@ services:
 volumes:
   ollama-models:
     driver: local
-
