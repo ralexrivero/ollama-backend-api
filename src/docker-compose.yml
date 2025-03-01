@@ -1,0 +1,19 @@
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/data
+    gpus: all
+    devices:
+      - /dev/nvidiactl:/dev/nvidiactl
+      - /dev/nvidia-uvm:/dev/nvidia-uvm
+      - /dev/nvidia0:/dev/nvidia0
+
+volumes:
+  ollama-models:
+    driver: local
+
