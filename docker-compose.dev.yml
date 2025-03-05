@@ -7,7 +7,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - /home/foundation-llm:/root/.ollama/models
+      - /var/foundation-llm:/root/.ollama/models
     deploy:
       resources:
         reservations:
@@ -19,7 +19,13 @@ services:
       - /dev/nvidiactl:/dev/nvidiactl
       - /dev/nvidia-uvm:/dev/nvidia-uvm
       - /dev/nvidia0:/dev/nvidia0
+    networks:
+      - app-network
 
 volumes:
   ollama-models:
     driver: local
+
+networks:
+  app-network:
+    external: true
